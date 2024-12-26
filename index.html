@@ -102,6 +102,7 @@
             /* Minimum width for buttons */
             margin: 0.25rem;
             /* Add margin for wrapped items */
+            font-size: 10px;
         }
 
         .categories .btn:hover,
@@ -215,6 +216,13 @@
         </script>
     </div>
 
+    <nav class="categories">
+        <button class="btn active" data-filter="all">Todos</button>
+        <button class="btn" data-filter="cat1">Categoria 1</button>
+        <button class="btn" data-filter="cat2">Categoria 2</button>
+        <button class="btn" data-filter="cat3">Categoria 3</button>
+    </nav>
+
     <!-- Área Principal -->
     <main class="catalog">
         <div class="product cat1 show">Produto 1</div>
@@ -224,12 +232,6 @@
         <div class="product cat2 show">Produto 5</div>
     </main>
 
-    <nav class="categories">
-        <button class="btn active" data-filter="all">Todos</button>
-        <button class="btn" data-filter="cat1">Categoria 1</button>
-        <button class="btn" data-filter="cat2">Categoria 2</button>
-        <button class="btn" data-filter="cat3">Categoria 3</button>
-    </nav>
     <script>
         const filterButtons = document.querySelectorAll('.btn');
         const products = document.querySelectorAll('.product');
@@ -271,10 +273,10 @@
 
                 // Show/hide products based on active filters
                 products.forEach(product => {
-                    product.classList.remove('show');
+                    product.style.display = 'none';
                     if (activeFilters.includes('all') ||
                         activeFilters.some(filter => product.classList.contains(filter))) {
-                        product.classList.add('show');
+                        product.style.display = 'block';
                     }
                 });
             });
