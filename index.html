@@ -180,13 +180,6 @@
         </div>
     </header>
 
-    <nav class="categories">
-        <button class="btn active" data-filter="all">Todos</button>
-        <button class="btn" data-filter="cat1">Categoria 1</button>
-        <button class="btn" data-filter="cat2">Categoria 2</button>
-        <button class="btn" data-filter="cat3">Categoria 3</button>
-    </nav>
-
     <div>
         <!-- Add this after the categories nav and before the main catalog -->
         <div class="filter-container" style="padding: 1rem; display: flex; justify-content: center;">
@@ -231,6 +224,12 @@
         <div class="product cat2 show">Produto 5</div>
     </main>
 
+    <nav class="categories">
+        <button class="btn active" data-filter="all">Todos</button>
+        <button class="btn" data-filter="cat1">Categoria 1</button>
+        <button class="btn" data-filter="cat2">Categoria 2</button>
+        <button class="btn" data-filter="cat3">Categoria 3</button>
+    </nav>
     <script>
         const filterButtons = document.querySelectorAll('.btn');
         const products = document.querySelectorAll('.product');
