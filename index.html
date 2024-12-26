@@ -125,7 +125,7 @@
                 margin: 0.25rem;
             }
 }
-        /* Product Catalog */
+        /* itens Catalog */
         .catalog {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -135,7 +135,7 @@
             max-width: 1200px;
         }
 
-        .product {
+        .itens {
             background: #fff;
             color: var(--color-accent);
             padding: 1rem;
@@ -148,13 +148,13 @@
             height: 85vh;
         }
 
-        .product.show {
+        .itens.show {
             display: block;
             opacity: 1;
             transform: translateY(0);
         }
 
-        .product:hover {
+        .itens:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-hover);
         }
@@ -224,7 +224,7 @@
         <div>
             <!-- Add this after the categories nav and before the main catalog -->
             <div class="filter-container" style="padding: 1rem; display: flex; justify-content: center;">
-                <input type="text" id="filterText" placeholder="Filtrar produtos..." style="padding: 0.5rem;
+                <input type="text" id="filterText" placeholder="Pesquisar..." style="padding: 0.5rem;
                   border-radius: var(--border-radius);
                   border: 1px solid var(--color-secondary);
                   width: 200px;
@@ -238,18 +238,18 @@
                 filterInput.addEventListener('input', function () {
                     const searchText = this.value.toLowerCase();
     
-                    products.forEach(product => {
-                        const productText = product.textContent.toLowerCase();
+                    itenss.forEach(itens => {
+                        const itensText = itens.textContent.toLowerCase();
                         if (!activeFilters.includes('all') &&
-                            !activeFilters.some(filter => product.classList.contains(filter))) {
-                            product.style.display = 'none';
+                            !activeFilters.some(filter => itens.classList.contains(filter))) {
+                            itens.style.display = 'none';
                             return;
                         }
     
-                        if (productText.includes(searchText)) {
-                            product.style.display = 'block';
+                        if (itensText.includes(searchText)) {
+                            itens.style.display = 'block';
                         } else {
-                            product.style.display = 'none';
+                            itens.style.display = 'none';
                         }
                     });
                 });
@@ -269,14 +269,14 @@
 
     <!-- Área Principal -->
     <main class="catalog">
-        <div class="product cat1 show">Produto 1</div>
-        <div class="product cat2 show">Produto 2</div>
-        <div class="product cat3 show">Produto 3</div>
-        <div class="product cat1 show">Produto 4</div>
-        <div class="product cat2 show">Produto 5</div>
-        <div class="product cat3 show">Produto 6</div>
-        <div class="product cat4 show">Produto 7</div>
-        <div class="product cat5 show">Produto 8</div>
+        <div class="itens cat1 show">Item 1 - cat1</div>
+        <div class="itens cat2 show">Item 2 - cat2</div>
+        <div class="itens cat3 show">Item 3 - cat3</div>
+        <div class="itens cat1 show">Item 4 - cat1</div>
+        <div class="itens cat2 show">Item 5 - cat2</div>
+        <div class="itens cat3 show">Item 6 - cat3</div>
+        <div class="itens cat4 show">Item 7 - cat4</div>
+        <div class="itens cat5 show">Item 8 - cat5</div>
     </main>
 
     <header class="footer">
@@ -290,7 +290,7 @@
 
     <script>
         const filterButtons = document.querySelectorAll('.btn');
-        const products = document.querySelectorAll('.product');
+        const itenss = document.querySelectorAll('.itens');
         let activeFilters = ['all'];
 
         filterButtons.forEach(button => {
@@ -327,12 +327,12 @@
                     }
                 }
 
-                // Show/hide products based on active filters
-                products.forEach(product => {
-                    product.style.display = 'none';
+                // Show/hide itenss based on active filters
+                itenss.forEach(itens => {
+                    itens.style.display = 'none';
                     if (activeFilters.includes('all') ||
-                        activeFilters.some(filter => product.classList.contains(filter))) {
-                        product.style.display = 'block';
+                        activeFilters.some(filter => itens.classList.contains(filter))) {
+                        itens.style.display = 'block';
                     }
                 });
             });
