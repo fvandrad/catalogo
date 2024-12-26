@@ -40,7 +40,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.3rem 2rem;
             background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
             color: #fff;
             animation: gradientMove 8s infinite alternate linear;
@@ -80,15 +80,21 @@
         /* Categories Navigation */
         .categories {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 0.5rem;
             background: var(--color-primary);
             padding: 1rem;
-            flex-wrap: wrap;
-            /* Allow buttons to wrap on smaller screens */
-        }
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+}
 
-        .categories .btn {
+.categories::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Opera */
+}
+
+.categories .btn {
             color: var(--color-secondary);
             padding: 0.5rem 1rem;
             border: 1px solid currentColor;
@@ -96,34 +102,29 @@
             cursor: pointer;
             transition: all var(--transition-default);
             background: transparent;
-            width: auto;
-            /* Allow buttons to size naturally */
+            flex: 0 0 auto;
             min-width: 120px;
-            /* Minimum width for buttons */
             margin: 0.25rem;
-            /* Add margin for wrapped items */
             font-size: 10px;
-        }
+            white-space: nowrap;
+}
 
-        .categories .btn:hover,
-        .categories .btn.active {
+.categories .btn:hover,
+.categories .btn.active {
             background-color: var(--color-secondary);
             color: var(--color-primary);
-        }
+}
 
-        @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
             .categories {
-                flex-direction: column;
-                align-items: stretch;
                 padding: 0.5rem;
+                flex-wrap: nowrap;
             }
 
             .categories .btn {
-                width: 100%;
-                margin: 0.25rem 0;
+                margin: 0.25rem;
             }
-        }
-
+}
         /* Product Catalog */
         .catalog {
             display: grid;
@@ -144,7 +145,7 @@
             transition: all var(--transition-default);
             opacity: 0;
             transform: translateY(20px);
-            height: 75vh;
+            height: 85vh;
         }
 
         .product.show {
@@ -156,6 +157,47 @@
         .product:hover {
             transform: scale(1.05);
             box-shadow: var(--shadow-hover);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            color: #fff;
+            animation: gradientMove 8s infinite alternate linear;
+        }
+
+        .footer .logo {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer .icons {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0.5rem;
+            /* background: rgba(255, 255, 255, 0.1); */
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+        }
+
+        .footer .icon {
+            cursor: pointer;
+            transition: all var(--transition-default);
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 15px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer .icon:hover {
+            transform: scale(1.1);
         }
 
         /* Animations */
@@ -175,13 +217,6 @@
     <!-- HTML -->
     <header class="header">
         <h1 class="logo">Catálogo</h1>
-        <div class="icons">
-            <button class="icon" aria-label="Instagran">📸</button>
-            <button class="icon" aria-label="Whatsapp">💬 Whatsapp</button>
-        </div>
-    </header>
-
-    <nav class="categories">
         <div>
             <!-- Add this after the categories nav and before the main catalog -->
             <div class="filter-container" style="padding: 1rem; display: flex; justify-content: center;">
@@ -216,6 +251,10 @@
                 });
             </script>
         </div>
+    </header>
+
+    <nav class="categories">
+       
         <button class="btn active" data-filter="all">Todos</button>
         <button class="btn" data-filter="cat1">Categoria 1</button>
         <button class="btn" data-filter="cat2">Categoria 2</button>
@@ -230,6 +269,15 @@
         <div class="product cat1 show">Produto 4</div>
         <div class="product cat2 show">Produto 5</div>
     </main>
+
+    <header class="footer">
+        <h1 class="logo">
+        </h1>
+        <div class="icons">
+            <button class="icon" aria-label="Instagran">📸</button>
+            <button class="icon" aria-label="Whatsapp">💬 Whatsapp</button>
+        </div>
+    </header>
 
     <script>
         const filterButtons = document.querySelectorAll('.btn');
