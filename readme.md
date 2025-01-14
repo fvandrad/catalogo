@@ -30,6 +30,13 @@ Este projeto é um catálogo interativo que permite aos usuários filtrar e pesq
 1. Clone o repositório para o seu ambiente local.
 2. Abra o arquivo `index.html` em um navegador web.
 
+## 🤝 Contribuição
+Contribuições são bem-vindas! Envie um pull request ou abra uma issue.
+
+## Apoie Nosso Projeto
+Ajude-nos a continuar criando projetos incríveis e apoiando o desenvolvimento de código aberto. Considere se tornar um patrocinador e juntos alcançaremos grandes conquistas!
+
+
 ## 📜 Licença
 
 Este projeto está licenciado sob a licença MIT.
